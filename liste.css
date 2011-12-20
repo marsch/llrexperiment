@@ -4,7 +4,7 @@ div#container {
 div.project {
   width: 100%;
   position: absolute;
-  height: 400px;
+  height: 600px;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
@@ -19,41 +19,41 @@ div.project:nth-child(1) {
 }
 div.project:nth-child(2) {
   background-image: url('imgs/background2.jpg');
-  top: 400px;
+  top: 0px;
 }
 div.project:nth-child(3) {
   background-image: url('imgs/background3.jpg');
-  top: 400px;
+  top: 0px;
 }
 div.project:nth-child(4) {
   background-image: url('imgs/background4.jpg');
-  top: 600px;
+  top: 0px;
 }
 div.project:nth-child(5) {
   background-image: url('imgs/background5.jpg');
-  top: 800px;
+  top: 0px;
 }
 div.project:nth-child(6) {
   background-image: url('imgs/background2.jpg');
-  top: 1000px;
+  top: 0px;
 }
 div.project:nth-child(7) {
   background-image: url('imgs/background1.jpg');
-  top: 1200px;
+  top: 0px;
 }
 div.project:nth-child(8) {
   background-image: url('imgs/background3.jpg');
-  top: 1400px;
+  top: 0px;
 }
 
 
 div.project.odd {
-  -webkit-transform: rotate(-2deg) scale(1);
-  -moz-transform: rotate(-2deg) scale(1);
+  /*-webkit-transform: rotate(-2deg) scale(1);
+  -moz-transform: rotate(-2deg) scale(1);*/
 }
 div.project.even {
-  -webkit-transform: rotate(2deg) scale(1);
-  -moz-transform: rotate(2deg) scale(1);
+  /*-webkit-transform: rotate(2deg) scale(1);
+  -moz-transform: rotate(2deg) scale(1);*/
 }
 div#scrollcontainer {
   height: 5000px; 
@@ -63,9 +63,9 @@ div#scrollcontainer {
   top: 0px;
 }
 
-div.project.active {
+/*div.project.active {
   top: 10px;
   height: 400px;
   -webkit-transform: translate(0,0);
 
-}
+}*/

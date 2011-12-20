@@ -51,24 +51,44 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
         itemStartY,
         currentHeight,
         currentPosY,
+        defaultSpacing,
         query;
 
+      defaultSpacing = 10;
       lowerBoundary = (((itemNum - 1) / maxItems) * maxHeight);
       itemStartY = ((itemNum / maxItems) * maxHeight);
       currentHeight = 400;
       currentPosY = 0;
       query = "#" + self.contentDomID + " > div:nth-child(" + itemNum + ")";
-      console.log(query);
+      //console.log(query);
+      var y = 0;
       if (currentY > lowerBoundary && currentY < itemStartY) {
-        console.log("ITEM " + itemNum + " ----------- ( " + lowerBoundary + "; " + itemStartY + "; " + currentY + ")");
-        $(query).addClass('active');
+        // active
+        y = (itemNum * defaultSpacing);
+        //console.log("ITEM " + itemNum);
+        //console.log("ITEM " + itemNum + " ----------- ( " + lowerBoundary + "; " + itemStartY + "; " + currentY + ")");
+        //$(query).addClass('active');
         //$(query).attr('style', 'transition-property: height; transition-duration: 1s; height: 400px; top: 0px; left: 0px; position: absolute; width: 100%;');
-      } else if (currentY > itemStartY){
-        $(query).removeClass('active');
+      } else if (currentY > (itemStartY)) {
+        // above active
+        y = (itemNum * defaultSpacing);
+
+        //console.log("ITEM " + itemNum + " is top out");
+        //$(query).removeClass('active');
        // $(query).attr('style', 'transition-property: height; transition-duration: 1s; height: 100px; position: absolute; top: ' + (200 * itemNum) + 'px; left: 0px; width: 100%;');
       } else {
-        $(query).removeClass('active');
+        // below active
+        y = (((itemNum) * defaultSpacing)) + 400;
+        if (y + (currentY - lowerBoundary) > 0) {
+          y = y - (y + (currentY - lowerBoundary));
+        }
+
+        //$(query).removeClass('active');
       }
+      var translate = 'translate3d(0px, ' + y + 'px, 0px)';
+      //console.log("ITEM " + itemNum + ": " + translate + ' curY:' + (currentY - lowerBoundary));
+      var deg = (itemNum % 2 === 0)? ('rotateZ(-2deg)'): ('rotateZ(2deg)');
+      $(query).attr('style', '-webkit-transform:' + translate + deg + ';');
     };
     
     for (var i = 1; i <= self.itemCount; i++) {
