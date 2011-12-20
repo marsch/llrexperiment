@@ -1,49 +1,72 @@
+html, body {
+	position: absolute;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	background-image: linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -o-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -moz-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -webkit-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -ms-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.05, #303030),
+		color-stop(0.84, #000000)
+	);
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #fff;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: Futura;
+	src: url('fonts/Futura-Condensed-Extra-Bold.eot');
+	src: url('fonts/Futura-Condensed-Extra-Bold.ttf');
+} 
+@font-face {
+	font-family: "Futura Medium";
+	src: url('fonts/Futura-Medium.eot');
+	src: url('fonts/Futura-Medium.ttf');
+} 
+#title {
+	position: fixed;
+	margin: 0px auto;
+	margin-top: 90px;
+	width: 400px;
+	font-size: 20px;
+	color: #fff;
+	padding-left: 500px;
+	font-family: "Futura Medium", Arial, sans-serif;
+	text-transform: uppercase;
+	text-align: right;
+	text-rendering: optimizeLegibility;
+	line-height: 25px;
+	letter-spacing:1.5px; 
+}
+
+
 div#container {
-  background-color: #000000;
+  position: absolute;
+  top: 200px;
+  
 }
 div.project {
-  width: 100%;
+  width: 160%;
   position: absolute;
+  top: 0px;
+  left: -20px
   height: 600px;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  -ms-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
   
   display: block;
-}
-div.project:nth-child(1) {
-  top: 0px;
-  height: 400px;
-  background-image: url('imgs/background1.jpg');
-}
-div.project:nth-child(2) {
-  background-image: url('imgs/background2.jpg');
-  top: 0px;
-}
-div.project:nth-child(3) {
-  background-image: url('imgs/background3.jpg');
-  top: 0px;
-}
-div.project:nth-child(4) {
-  background-image: url('imgs/background4.jpg');
-  top: 0px;
-}
-div.project:nth-child(5) {
-  background-image: url('imgs/background5.jpg');
-  top: 0px;
-}
-div.project:nth-child(6) {
-  background-image: url('imgs/background2.jpg');
-  top: 0px;
-}
-div.project:nth-child(7) {
-  background-image: url('imgs/background1.jpg');
-  top: 0px;
-}
-div.project:nth-child(8) {
-  background-image: url('imgs/background3.jpg');
-  top: 0px;
 }
 
 
@@ -56,7 +79,7 @@ div.project.even {
   -moz-transform: rotate(2deg) scale(1);*/
 }
 div#scrollcontainer {
-  height: 5000px; 
+  height: 7500px; 
   z-index:2; 
   position: absolute; 
   left: 0px; 
