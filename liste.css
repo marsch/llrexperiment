@@ -69,6 +69,35 @@ div.project {
   display: block;
 }
 
+div.project.gradient {
+	background-image: linear-gradient(right , #303030 5%, #000000 84%);
+	background-image: -o-linear-gradient(right , #303030 5%, #000000 84%);
+	background-image: -moz-linear-gradient(right , #303030 5%, #000000 84%);
+	background-image: -webkit-linear-gradient(right , #303030 5%, #000000 84%);
+	background-image: -ms-linear-gradient(right , #303030 5%, #000000 84%);
+	background-image: -webkit-gradient(
+		linear,
+		right top,
+		left top,
+		color-stop(0.05, #303030),
+		color-stop(0.84, #000000)
+	);
+
+}
+div.project.gradient2 {
+	background-image: linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -o-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -moz-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -webkit-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -ms-linear-gradient(left , #303030 5%, #000000 84%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right top,
+		color-stop(0.05, #303030),
+		color-stop(0.84, #000000)
+	);
+}
 
 div.project.odd {
   /*-webkit-transform: rotate(-2deg) scale(1);
@@ -79,11 +108,139 @@ div.project.even {
   -moz-transform: rotate(2deg) scale(1);*/
 }
 div#scrollcontainer {
-  height: 7500px; 
+  height: 8000px; 
   z-index:2; 
   position: absolute; 
   left: 0px; 
   top: 0px;
+}
+
+ul.paging {
+	position: relative;
+	left: -1525px;
+	list-style: none;
+	display: block;
+	width: 3850px;
+	height: 600px;
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	padding-left: 0px;
+	margin-top: -50px;
+}
+
+
+ul.paging li{
+	position: relative;
+	float: left;
+	margin: 0px;
+  margin-left: 0px;
+	padding: 0px;
+	height: 600px;
+	width: 881px;
+	padding-left: 222px;
+	padding-right: 178px;
+	padding-top: 50px;
+	visibility: hidden;
+}
+ul.paging li.active{
+	visibility: visible;
+}
+
+.grey {
+	color: #3d3c3c!important;
+}
+
+a.blocklink {
+	background: #ffffff url(imgs/arrow.png) no-repeat;
+	background-position: 5px 8px;
+	margin-bottom: 8px;
+	line-height: 26px;
+	padding-left: 20px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	height: 26px;
+	text-decoration: none;
+	color: #3d3c3c;
+	text-transform: uppercase;
+	font-family: Arial, sans-serif;
+}
+a.blocklink:hover {
+	background: #3d3c3c url(imgs/arrow-black.png) no-repeat;
+	background-position: 5px 8px;
+	color: #ffffff;
+}
+
+a.arrow {
+	position: absolute;
+	top: 200px;
+	width: 43px;
+	height: 65px;
+	display: block;
+	text-indent: -9000px;
+	outline: none;
+}
+a.arrow.prev {
+	background: url(imgs/navi-left.png);
+	left: 80px;
+}
+a.arrow.next {
+	background: url(imgs/navi-right.png);
+	right: 320px;
+}
+div.project .contents {
+  margin-left: 250px;
+}
+div.project .contents h2,
+div.project .contents h3,
+div.project .contents h4 {
+  color: #fff;
+	text-transform: uppercase;
+	font-family: "Futura Medium", Arial, non-serif;
+}
+
+div.project .contents h2 {
+	font-size: 20px;
+	margin: 0px;
+	margin-top: 20px;
+}
+div.project .contents h3 {
+	font-family: Futura, sans-serif;
+	font-size: 48px;
+	margin: 0px;
+}
+div.project .contents h4 {
+	font-family: Futura, sans-serif;
+	font-size: 48px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	margin-left: -2px;
+}
+
+div.project .contents p {
+	color: #fff;
+	font-family: "Lucida Grande", Arial, sans-serif;
+	font-size: 14px;
+	width: 600px;
+	line-height: 22px;
+}
+
+
+
+.movie {
+	position: absolute!important;
+	width: 500px;
+	top: 0px!important;
+	left: 0px;
+	visibility: hidden;
+}
+
+.vjs-controls,
+.vjs-spinner,
+.vjs-big-play-button,
+.vjs-styles-check {
+	display: none!important;
 }
 
 /*div.project.active {

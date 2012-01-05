@@ -43,7 +43,7 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
 
   self.onScroll = function (event) {
     
-    var maxY = 15000 - self.windowHeight,
+    var maxY = 30000 - self.windowHeight,
       currentY = window.pageYOffset;
 
     var calc = function (itemNum, maxItems, maxHeight, currentY) {
@@ -71,18 +71,9 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
       if (currentY > lowerBoundary && currentY < itemStartY) {
         // active
         y = (itemNum * defaultSpacing) + yoffset;
-        //console.log("ITEM " + itemNum);
-        //console.log("ITEM " + itemNum + " ----------- ( " + lowerBoundary + "; " + itemStartY + "; " + currentY + ")");
-        //$(query).addClass('active');
-        //$(query).attr('style', 'transition-property: height; transition-duration: 1s; height: 400px; top: 0px; left: 0px; position: absolute; width: 100%;');
       } else if (currentY > (itemStartY)) {
         // above active
         y = (itemNum * defaultSpacing) + yoffset;
-        
-
-        //console.log("ITEM " + itemNum + " is top out");
-        //$(query).removeClass('active');
-       // $(query).attr('style', 'transition-property: height; transition-duration: 1s; height: 100px; position: absolute; top: ' + (200 * itemNum) + 'px; left: 0px; width: 100%;');
       } else {
         // below active
         y = (((itemNum) * defaultSpacing)) + currentHeightBefore + yoffset;
@@ -91,12 +82,8 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
         }
         deg = (itemNum % 2 === 0)? ('rotateZ(2deg)'): ('rotateZ(-2deg)');
 
-        //$(query).removeClass('active');
       }
-      console.log(currentHeightBefore);
-      var translate = 'translate3d(-40px, ' + y + 'px, 0px)';
-      //console.log("ITEM " + itemNum + ": " + translate + ' curY:' + (currentY - lowerBoundary));
-      
+      var translate = 'translate3d(-20px, ' + y + 'px, 0px)';
       $(query).attr('style', '-webkit-transform:' + translate + deg + ';');
     };
     
@@ -117,4 +104,43 @@ $(function () {
   console.log("READY");
   var accordion = new WheelAccordionView('container', 'scrollcontainer', []);
   accordion.draw();
+
+
+  $('.arrow').live('click', function () {
+    $current = $(this).parent().parent().find('li.active');
+    $bg = $(this).parent().parent().parent();
+    if($(this).hasClass('next')) {
+      if ($current.next('li').length > 0) {
+        $page = $current.next('li');
+        $bg.animate({'margin-left': '-=1283px'}, 500);
+      }
+    } else {
+      if ($current.prev('li').length > 0) {
+        $page = $current.prev('li');
+        $bg.animate({'margin-left': '+=1283px'}, 500);
+      }
+    }
+    $current.slideUp(400, function () {
+      $current.show().removeClass('active');
+    });
+    $page.addClass('active').hide().slideDown(600, function () {
+    
+    });
+    return false;
+  });
+
+  $('a.play').live('click', function () {
+    $video = $(this).parent().parent().parent().parent().next('video');
+    videoId = $video.attr('id');
+    player = VideoJS.setup(videoId);
+    $video.css('visibility', 'visible');
+    player.play();
+    
+    return false;
+  });
+  $('video').live('click', function () {
+    $video.css('visibility', 'hidden');
+    player.pause();
+    return false;
+  });
 });
