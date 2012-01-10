@@ -84,7 +84,7 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
         deg = (itemNum % 2 === 0)? ('rotateZ(2deg)'): ('rotateZ(-2deg)');
 
       }
-      var translate = 'translate3d(-20px, ' + y + 'px, 0px)';
+      var translate = 'translate3d(20px, ' + y + 'px, 0px)';
       $(query).attr('style', '-webkit-transform:' + translate + deg + ';');
     };
     

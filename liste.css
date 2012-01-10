@@ -58,7 +58,7 @@ div#wrapper {
 
 div#container {
   top: 200px;
-  width: 990px !important;
+  width: 90% !important;
   margin-left: auto;
   margin-right: auto;
   overflow:hidden;
@@ -66,15 +66,21 @@ div#container {
   position: fixed;
 }
 div.project {
-  width: 160%;
+  width: 960px;
   position: absolute;
+  overflow: hidden;
   top: 0px;
   left: -20px
   height: 600px;
+  border: 15px solid #FFFFFF;
   -webkit-transition: all 0.5s linear;
   -moz-transition: all 0.5s linear;
   -o-transition: all 0.5s linear;
   -ms-transition: all 0.5s linear;
+  
+-webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
+-moz-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
+box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
   
   display: block;
 }
