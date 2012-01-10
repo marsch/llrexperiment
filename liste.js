@@ -34,16 +34,17 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
   };
 
   self.updateContainerCSS = function () {
+    var offset = 20;
     console.log("udpate");
     var $container = $('#' + self.contentDomID),
-      containerCSS = 'height:' + ($(window).height()-200) + 'px; width:' + $(window).width() + 'px; overflow:hidden; z-index:3; position:fixed; left: 0px; top: 200px;';
+      containerCSS = 'height:' + ($(window).height()-offset) + 'px;';
     $container.attr('style', containerCSS);
     self.windowHeight = $(window).height();
   };
 
   self.onScroll = function (event) {
     
-    var maxY = 30000 - self.windowHeight,
+    var maxY = 20000 - self.windowHeight,
       currentY = window.pageYOffset;
 
     var calc = function (itemNum, maxItems, maxHeight, currentY) {

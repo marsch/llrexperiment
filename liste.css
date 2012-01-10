@@ -1,9 +1,9 @@
 html, body {
-	position: absolute;
+	/*position: absolute;
 	margin: 0px;
 	padding: 0px;
 	width: 100%;
-	height: 100%;
+	height: 100%;*/
 	background: #000;
 	background-image: linear-gradient(left , #303030 5%, #000000 84%);
 	background-image: -o-linear-gradient(left , #303030 5%, #000000 84%);
@@ -49,11 +49,21 @@ html, body {
 	letter-spacing:1.5px; 
 }
 
+div#wrapper {
+  width: 990px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow:hidden;
+}
 
 div#container {
-  position: absolute;
   top: 200px;
-  
+  width: 990px !important;
+  margin-left: auto;
+  margin-right: auto;
+  overflow:hidden;
+  z-index: 3;
+  position: fixed;
 }
 div.project {
   width: 160%;
