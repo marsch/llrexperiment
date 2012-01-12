@@ -6,7 +6,7 @@ document: true, window: true, Date: true, $:true, Mustache: true,
 Notifier: true
 */
 
-function WheelAccordionView(contentDomID, scrollDomID, topics) {
+function WheelAccordionView(contentDomID, scrollDomID, css3d) {
   if (! (this instanceof arguments.callee)) {
     return new arguments.callee(arguments);
   }
@@ -16,12 +16,14 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
   self.init = function () {
     self.contentDomID = contentDomID;
     self.scrollDomID = scrollDomID;
-    self.topcis = topics;
     self.currentY = 0;
+    self.css3d = css3d;
 
     // cache items 
     self.itemCount = 0;
     self.windowHeight = 0;
+
+    
   };
 
   self.draw = function () {
@@ -35,7 +37,7 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
 
   self.updateContainerCSS = function () {
     var offset = 20;
-    console.log("udpate");
+    console.log('udpate');
     var $container = $('#' + self.contentDomID),
       containerCSS = 'height:' + ($(window).height()-offset) + 'px;';
     $container.attr('style', containerCSS);
@@ -43,32 +45,43 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
   };
 
   self.onScroll = function (event) {
-    
+    console.log('on scroll');
     var maxY = 20000 - self.windowHeight,
-      currentY = window.pageYOffset;
+      currentY = window.pageYOffset,
+      calc;
 
-    var calc = function (itemNum, maxItems, maxHeight, currentY) {
+    calc = function (itemNum, maxItems, maxHeight, currentY) {
       var lowerBoundary,
         itemStartY,
         currentHeight,
         currentHeightBefore,
         currentPosY,
         defaultSpacing,
-        query;
+        query,
+        y,
+        yoffset,
+        deg,
+        translate;
 
       defaultSpacing = 20;
       lowerBoundary = (((itemNum - 1) / maxItems) * maxHeight);
       itemStartY = ((itemNum / maxItems) * maxHeight);
       
       currentPosY = 0;
-      query = "#" + self.contentDomID + " > div:nth-child(" + itemNum + ")";
-      queryBefore = "#" + self.contentDomID + " > div:nth-child(" + (itemNum - 1) + ")";
+      query = '#' + self.contentDomID + ' > div:nth-child(' + itemNum + ')';
+      queryBefore = '#' + self.contentDomID + ' > div:nth-child(' + (itemNum - 1) + ')';
       currentHeight = $(query + ' > div').height();
       currentHeightBefore = $(queryBefore + ' > div').height();
       //console.log(query);
-      var y = 0;
-      var yoffset = 0;
-      var deg = (itemNum % 2 === 0)? ('rotateZ(-2deg)'): ('rotateZ(2deg)');
+      y = 0;
+      yoffset = 0;
+      
+
+      if (self.css3d) {
+        deg = (itemNum % 2 === 0) ? ('rotateZ(-2deg)') : ('rotateZ(2deg)');
+      } else {
+        deg = (itemNum % 2 === 0) ? ('rotate(-2deg)') : ('rotate(2deg)');
+      }
       if (currentY > lowerBoundary && currentY < itemStartY) {
         // active
         y = (itemNum * defaultSpacing) + yoffset;
@@ -81,11 +94,20 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
         if (y + (currentY - lowerBoundary) > 0) {
           y = y - (y + (currentY - lowerBoundary));
         }
-        deg = (itemNum % 2 === 0)? ('rotateZ(2deg)'): ('rotateZ(-2deg)');
 
+        if (self.css3d) {
+          deg = (itemNum % 2 === 0) ? ('rotateZ(2deg)') : ('rotateZ(-2deg)');
+        } else {
+          deg = (itemNum % 2 === 0) ? ('rotate(2deg)') : ('rotate(-2deg)');
+        }
       }
-      var translate = 'translate3d(20px, ' + y + 'px, 0px)';
-      $(query).attr('style', '-webkit-transform:' + translate + deg + ';');
+
+      if (self.css3d) {
+        translate = 'translate3D(20px, ' + y + 'px, 0px) ';
+      } else {
+        translate = 'translate(20px, ' + y + 'px) ';
+      }
+      $(query).attr('style', '-webkit-transform:' + translate + deg + ';' + ' -moz-transform:' + translate + deg + ';');
     };
     
     for (var i = 1; i <= self.itemCount; i++) {
@@ -102,10 +124,22 @@ function WheelAccordionView(contentDomID, scrollDomID, topics) {
 
 
 $(function () {
-  console.log("READY");
-  var accordion = new WheelAccordionView('container', 'scrollcontainer', []);
-  accordion.draw();
+  console.log('READY');
+  if (Modernizr.csstransforms &&
+      Modernizr.csstransitions &&
+      Modernizr.csstransforms3d) {
+    var accordion = new WheelAccordionView('container', 'scrollcontainer', true);
+    accordion.draw();
+  } else if (Modernizr.csstransforms &&
+             Modernizr.csstransitions) {
+    var accordion = new WheelAccordionView('container', 'scrollcontainer', false);
+    accordion.draw();
+  } else {
+    alert('wrong browser, need support for css transitions and transformations');
+  }
+  
 
+$('html,body').animate({scrollTop: 1170}, 1000);
 
   $('.arrow').live('click', function () {
     $current = $(this).parent().parent().find('li.active');
