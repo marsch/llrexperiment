@@ -36,7 +36,7 @@ html, body {
 #title {
 	position: fixed;
 	margin: 0px auto;
-	margin-top: 90px;
+	margin-top: 40px;
 	width: 1280px;
   text-align: right;
 	font-size: 20px;
@@ -57,7 +57,7 @@ div#wrapper {
 }
 
 div#container {
-  top: 200px;
+  top: 100px;
   width: 90% !important;
   margin-left: auto;
   margin-right: auto;
@@ -158,7 +158,7 @@ ul.paging li{
 	width: 851px;
 	padding-left: 302px;
 	padding-right: 128px;
-	padding-top: 150px;
+	padding-top: 110px;
 	visibility: hidden;
 }
 ul.paging li.active{

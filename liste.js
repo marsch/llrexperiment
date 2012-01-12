@@ -61,7 +61,8 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
         y,
         yoffset,
         deg,
-        translate;
+        translate,
+        positioningOffset = 0; //to tie the bottom more upper
 
       defaultSpacing = 20;
       lowerBoundary = (((itemNum - 1) / maxItems) * maxHeight);
@@ -78,9 +79,9 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
       
 
       if (self.css3d) {
-        deg = (itemNum % 2 === 0) ? ('rotateZ(-2deg)') : ('rotateZ(2deg)');
+        deg = (itemNum % 2 === 0) ? ('rotateZ(2deg)') : ('rotateZ(-2deg)');
       } else {
-        deg = (itemNum % 2 === 0) ? ('rotate(-2deg)') : ('rotate(2deg)');
+        deg = (itemNum % 2 === 0) ? ('rotate(2deg)') : ('rotate(-2deg)');
       }
       if (currentY > lowerBoundary && currentY < itemStartY) {
         // active
@@ -90,7 +91,7 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
         y = (itemNum * defaultSpacing) + yoffset;
       } else {
         // below active
-        y = (((itemNum) * defaultSpacing)) + currentHeightBefore + yoffset;
+        y = (((itemNum) * defaultSpacing)) + currentHeightBefore + yoffset - positioningOffset;
         if (y + (currentY - lowerBoundary) > 0) {
           y = y - (y + (currentY - lowerBoundary));
         }
@@ -163,9 +164,30 @@ $('html,body').animate({scrollTop: 1170}, 1000);
     });
     return false;
   });
-
+  $('.blocklink').live('click', function () {
+    $current = $(this).parent().parent().parent().find('li.active');
+    $bg = $(this).parent().parent().parent();
+    if($(this).hasClass('next')) {
+      if ($current.next('li').length > 0) {
+        $page = $current.next('li');
+        $bg.animate({'margin-left': '-=1283px'}, 500);
+      }
+    } else {
+      if ($current.prev('li').length > 0) {
+        $page = $current.prev('li');
+        $bg.animate({'margin-left': '+=1283px'}, 500);
+      }
+    }
+    $current.slideUp(400, function () {
+      $current.show().removeClass('active');
+    });
+    $page.addClass('active').hide().slideDown(600, function () {
+    
+    });
+    return false;
+  });
   $('a.play').live('click', function () {
-    $video = $(this).parent().parent().parent().parent().next('video');
+    $video = $(this).parent().parent().parent().parent().find('video');
     videoId = $video.attr('id');
     player = VideoJS.setup(videoId);
     $video.css('visibility', 'visible');
@@ -175,6 +197,7 @@ $('html,body').animate({scrollTop: 1170}, 1000);
   });
   $('video').live('click', function () {
     $video.css('visibility', 'hidden');
+    $video.css('display', 'none');
     player.pause();
     return false;
   });
