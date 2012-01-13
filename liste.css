@@ -125,7 +125,7 @@ div.project.even {
   -moz-transform: rotate(2deg) scale(1);*/
 }
 div#scrollcontainer {
-  height: 6000px; 
+  height: 8000px; 
   z-index:2; 
   position: absolute; 
   left: 0px; 

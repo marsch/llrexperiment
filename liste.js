@@ -46,7 +46,7 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
 
   self.onScroll = function (event) {
     console.log('on scroll');
-    var maxY = 20000 - self.windowHeight,
+    var maxY = 25000 - self.windowHeight,
       currentY = window.pageYOffset,
       calc;
 
