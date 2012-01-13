@@ -148,12 +148,12 @@ $('html,body').animate({scrollTop: 1170}, 1000);
     if($(this).hasClass('next')) {
       if ($current.next('li').length > 0) {
         $page = $current.next('li');
-        $bg.animate({'margin-left': '-=1283px'}, 500);
+        $bg.animate({'margin-left': '-=1275px'}, 500);
       }
     } else {
       if ($current.prev('li').length > 0) {
         $page = $current.prev('li');
-        $bg.animate({'margin-left': '+=1283px'}, 500);
+        $bg.animate({'margin-left': '+=1275px'}, 500);
       }
     }
     $current.slideUp(400, function () {
@@ -165,17 +165,17 @@ $('html,body').animate({scrollTop: 1170}, 1000);
     return false;
   });
   $('.blocklink').live('click', function () {
-    $current = $(this).parent().parent().parent().find('li.active');
-    $bg = $(this).parent().parent().parent();
+    $current = $(this).parent().parent().parent().parent().find('li.active');
+    $bg = $(this).parent().parent().parent().parent();
     if($(this).hasClass('next')) {
       if ($current.next('li').length > 0) {
         $page = $current.next('li');
-        $bg.animate({'margin-left': '-=1283px'}, 500);
+        $bg.animate({'margin-left': '-=1275px'}, 500);
       }
     } else {
       if ($current.prev('li').length > 0) {
         $page = $current.prev('li');
-        $bg.animate({'margin-left': '+=1283px'}, 500);
+        $bg.animate({'margin-left': '+=1275px'}, 500);
       }
     }
     $current.slideUp(400, function () {
@@ -197,8 +197,19 @@ $('html,body').animate({scrollTop: 1170}, 1000);
   });
   $('video').live('click', function () {
     $video.css('visibility', 'hidden');
-    $video.css('display', 'none');
     player.pause();
+    
+    $current = $(this).parent().parent().parent().find('li.active');
+    $bg = $(this).parent().parent().parent();
+    $page = $current.next('li');
+    $bg.animate({'margin-left': '-=1275px'}, 500);
+    $current.slideUp(400, function () {
+      $current.show().removeClass('active');
+    });
+    $page.addClass('active').hide().slideDown(600, function () {
+    
+    });
+
     return false;
   });
 });

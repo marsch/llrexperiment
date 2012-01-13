@@ -23,8 +23,8 @@ html, body {
 	text-rendering: optimizeLegibility;
 }
 
-@font-face {<D-r>
-	font-family: Futura;
+@font-face {
+	font-family: "FuturaBold";
 	src: url('fonts/Futura-Condensed-Extra-Bold.eot');
 	src: url('fonts/Futura-Condensed-Extra-Bold.ttf');
 } 
@@ -50,7 +50,7 @@ html, body {
 }
 
 div#wrapper {
-  width: 1283px;
+  width: 1273px;
   margin-left: auto;
   margin-right: auto;
   overflow:hidden;
@@ -125,7 +125,7 @@ div.project.even {
   -moz-transform: rotate(2deg) scale(1);*/
 }
 div#scrollcontainer {
-  height: 8000px; 
+  height: 6000px; 
   z-index:2; 
   position: absolute; 
   left: 0px; 
@@ -137,8 +137,8 @@ ul.paging {
 	left: -1525px;
 	list-style: none;
 	display: block;
-	width: 3843px;
-	height: 650px;
+	width: 4843px;
+	height: 720px;
 	margin: 0px;
 	padding: 0px;
 	overflow: hidden;
@@ -154,10 +154,9 @@ ul.paging li{
 	margin: 0px;
   margin-left: 0px;
 	padding: 0px;
-	height: 650px;
-	width: 851px;
-	padding-left: 302px;
-	padding-right: 128px;
+	height: 720px;
+	width: 1273px;
+	padding-left: 50px;
 	padding-top: 110px;
 	visibility: hidden;
 }
@@ -192,7 +191,7 @@ a.blocklink:hover {
 
 a.arrow {
 	position: absolute;
-	top: 200px;
+	top: 350px;
 	width: 43px;
 	height: 65px;
 	display: block;
@@ -205,7 +204,7 @@ a.arrow.prev {
 }
 a.arrow.next {
 	background: url(imgs/navi-right.png);
-	right: 320px;
+	right: 220px;
 }
 div.project .contents {
   margin-left: 250px;
@@ -219,17 +218,18 @@ div.project .contents h4 {
 }
 
 div.project .contents h2 {
-	font-size: 20px;
+	font-size: 25px;
 	margin: 0px;
 	margin-top: 20px;
 }
 div.project .contents h3 {
-	font-family: Futura, sans-serif;
-	font-size: 48px;
+	font-family: 'FuturaBold', sans-serif;
+	font-size: 46px;
+  padding-top: 15px;
 	margin: 0px;
 }
 div.project .contents h4 {
-	font-family: Futura, sans-serif;
+	font-family: 'FuturaBold', sans-serif;
 	font-size: 48px;
 	margin-top: 20px;
 	margin-bottom: 0px;
@@ -249,7 +249,7 @@ div.project .contents p {
 .movie {
 	position: absolute!important;
   width: 1273px;
-  top: 0px!important;
+  top: 40px!important;
 	left: 0px;
 	visibility: hidden;
 }
@@ -287,3 +287,10 @@ a.llr {
   -webkit-transform: translate(0,0);
 
 }*/
+
+div.page {
+  position: relative;
+  width: 851px;
+  left: 300px;
+  
+}
