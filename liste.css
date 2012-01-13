@@ -35,22 +35,24 @@ html, body {
 } 
 #title {
 	position: fixed;
-	margin: 0px auto;
 	margin-top: 40px;
-	width: 1280px;
+  width: 1289px;
   text-align: right;
+}
+h1.titleFont {
 	font-size: 20px;
 	color: #fff;
 	font-family: "Futura Medium", Arial, sans-serif;
 	text-transform: uppercase;
-	text-align: right;
 	text-rendering: optimizeLegibility;
 	line-height: 25px;
-	letter-spacing:1.5px; 
+	letter-spacing:2.0px; 
+
 }
 
 div#wrapper {
   width: 1273px;
+  max-width: 1273px;
   margin-left: auto;
   margin-right: auto;
   overflow:hidden;
@@ -58,11 +60,11 @@ div#wrapper {
 
 div#container {
   top: 100px;
-  width: 90% !important;
+  width: 1350px;
   margin-left: auto;
   margin-right: auto;
   overflow:hidden;
-  z-index: 3;
+  z-index: 13;
   position: fixed;
 }
 div.project {
@@ -72,6 +74,7 @@ div.project {
   top: 0px;
   left: -20px
   height: 600px;
+  cursor: pointer;
   /*border: 15px solid #FFFFFF;*/
   -webkit-transition: all 0.5s linear;
   -moz-transition: all 0.5s linear;
@@ -79,9 +82,9 @@ div.project {
   -ms-transition: all 0.5s linear;
   transistion: all 0.5s linear;
   
--webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
--moz-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.4);
   
   display: block;
 }

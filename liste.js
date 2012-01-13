@@ -46,6 +46,7 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
 
   self.onScroll = function (event) {
     console.log('on scroll');
+    console.log(window.pageYOffset);
     var maxY = 25000 - self.windowHeight,
       currentY = window.pageYOffset,
       calc;
@@ -106,7 +107,7 @@ function WheelAccordionView(contentDomID, scrollDomID, css3d) {
       if (self.css3d) {
         translate = 'translate3D(20px, ' + y + 'px, 0px) ';
       } else {
-        translate = 'translate(20px, ' + y + 'px) ';
+        translate = 'translateX(20px) translateY( ' + y + 'px) translateZ(0px) ';
       }
       $(query).attr('style', '-webkit-transform:' + translate + deg + ';' + ' -moz-transform:' + translate + deg + ';');
     };
