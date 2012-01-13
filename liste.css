@@ -235,7 +235,14 @@ div.project .contents h4 {
 	margin-bottom: 0px;
 	margin-left: -2px;
 }
+div.project .contents h4.super {
+	font-family: 'FuturaBold', sans-serif;
+	font-size: 104px;
+	margin-top: 20px;
+	margin-bottom: 0px;
+	margin-left: -2px;
 
+}
 div.project .contents p {
 	color: #fff;
 	font-family: "Lucida Grande", Arial, sans-serif;
